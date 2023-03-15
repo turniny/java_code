@@ -1,10 +1,10 @@
 <template>
   <div class="data-pie">
     <el-row :gutter="20">
-      <el-col :xs="24" :sm="24" :md="12" :lg="8" class="pie-col">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" class="pie-col">
         <div id="pie-business" style="height: 300px;" />
       </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="8" class="pie-col">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" class="pie-col">
         <div id="pie-originalpolicy" style="height: 300px;" />
       </el-col>
     </el-row>
@@ -35,7 +35,6 @@ export default {
     },
     createPie(key, data) {
       const chartDom = document.getElementById(key);
-      console.log(this, chartDom);
       const myChart = echarts.init(chartDom);
       const option = {
         // title: {

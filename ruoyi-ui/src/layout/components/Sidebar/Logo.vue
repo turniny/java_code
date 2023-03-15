@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: '猇亭区惠企管理系统',
+      title: '猇亭区惠企政策服务平台',
       logo: logoImg
     }
   }

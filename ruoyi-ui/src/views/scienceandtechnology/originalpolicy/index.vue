@@ -1,14 +1,18 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="标题" prop="tittle">
-        <el-input
-          v-model="queryParams.tittle"
-          placeholder="请输入标题"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+      <el-row :gutter="20">
+        <el-col>
+          <el-form-item label="标题" prop="tittle">
+            <el-input
+              v-model="queryParams.tittle"
+              placeholder="请输入标题"
+              clearable
+              @keyup.enter.native="handleQuery"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
       <el-form-item label="政策级别" prop="policyLevel">
         <el-select v-model="queryParams.policyLevel" placeholder="请选择政策级别" clearable>
           <el-option>
@@ -25,8 +29,8 @@
       <el-form-item label="适用行业" prop="applicableIndustries">
         <el-select v-model="queryParams.applicableIndustries" placeholder="请选择适用行业" clearable>
           <el-option>
-              请选择
-            </el-option>
+            请选择
+          </el-option>
           <el-option
             v-for="dict in dict.type.applicable_industries"
             :key="dict.value"
@@ -44,7 +48,7 @@
           range-separator="-"
           start-placeholder="开始日期"
           end-placeholder="结束日期"
-        ></el-date-picker>
+        />
       </el-form-item>
       <el-form-item label="发布人" prop="publisher">
         <el-input
@@ -275,6 +279,12 @@
 import { listOriginalpolicy, getOriginalpolicy, delOriginalpolicy, addOriginalpolicy, updateOriginalpolicy } from "@/api/scienceandtechnology/originalpolicy/originalpolicy";
 import SelectEnterprise from '@/views/components/SelectEnterprise'
 
+const formItemCol = {
+  lg: 6,
+  md: 8,
+  xs: 12
+};
+
 export default {
   name: "Originalpolicy",
   dicts: ['rank', 'applicable_industries','show_state'],
@@ -449,6 +459,7 @@ export default {
     // 发布到指定企业
     publishToSelect(row) {
       this.enterpriseVisible = true;
+      this.handlePop = false;
       const id = row.id || this.ids;
       this.originalpolicyId = id;
     },
